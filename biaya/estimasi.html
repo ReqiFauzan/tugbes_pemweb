@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estimasi Pembelian Otomatis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .result {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .result b {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Estimasi Pembelian</h2>
+    <label>Subtotal Barang (Rp)</label>
+    <input type="number" id="subtotal" placeholder="misal: 120000" oninput="hitungTotal()">
+
+    <label>Biaya Pengiriman (Rp)</label>
+    <input type="number" id="pengiriman" placeholder="misal: 10000" oninput="hitungTotal()">
+
+    <label>Persentase Pajak (%)</label>
+    <input type="number" id="pajak" placeholder="misal: 10" oninput="hitungTotal()">
+
+    <div class="result">
+      Jumlah Pajak: <span id="jumlahPajak">Rp0,00</span><br><br>
+      <b>Total Estimasi: <span id="totalEstimasi">Rp0,00</span></b>
+    </div>
+  </div>
+
+  <script>
+    function formatRupiah(angka) {
+      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angka);
+    }
+
+    function hitungTotal() {
+      const subtotal = parseFloat(document.getElementById('subtotal').value) || 0;
+      const pengiriman = parseFloat(document.getElementById('pengiriman').value) || 0;
+      const pajakPersen = parseFloat(document.getElementById('pajak').value) || 0;
+
+      const jumlahPajak = (subtotal * pajakPersen) / 100;
+      const total = subtotal + pengiriman + jumlahPajak;
+
+      document.getElementById('jumlahPajak').textContent = formatRupiah(jumlahPajak);
+      document.getElementById('totalEstimasi').textContent = formatRupiah(total);
+    }
+  </script>
+</body>
+</html>

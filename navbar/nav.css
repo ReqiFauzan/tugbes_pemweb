@@ -1,0 +1,109 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  background: #e0e0e0;
+  padding: 8px 15px;
+  border-radius: 20px;
+}
+
+.profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+nav a.active {
+  /* Style dasar */
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    display: flex;
+    gap: 20px;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: black;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    background-color: #eee;
+  }
+  
+  .nav-link.active {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+    background-color: #ffe5e5;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive - sembunyikan navbar saat layar kecil */
+  @media screen and (max-width: 700px) {
+    .navbar {
+      display: none;
+    }
+}
+
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .settings {
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 1;
+  }
+  
+  .dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown-container.active .dropdown-menu {
+    display: block;
+  }
