@@ -5,6 +5,7 @@ include 'koneksi.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama   = mysqli_real_escape_string($conn, $_POST['nama']);
     $ulasan = mysqli_real_escape_string($conn, $_POST['ulasan']);
+
     if (!empty($nama) && !empty($ulasan)) {
         $sql = "INSERT INTO ulasan (nama, ulasan) VALUES ('$nama', '$ulasan')";
         mysqli_query($conn, $sql);
@@ -61,20 +62,70 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 <!-- NAVIGATION BAR -->
+<style>
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #ffffff;
+        padding: 10px 20px;
+        border-bottom: 1px solid #ddd;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .nav-left,
+    .nav-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .nav-center h1 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .img-content, .img-right {
+        width: 24px;
+        height: 24px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .img-content {
+        margin-left: 0;
+    }
+</style>
+
 <div class="navbar">
+    <!-- Tombol kembali di kiri -->
     <div class="nav-left">
         <a href="javascript:history.back()">
-            <img src="gambarback.png" alt="kembali" class="img-content">
+            <img src="gambar1.png" alt="kembali" class="img-content">
         </a>
     </div>
+
+    <!-- Judul di tengah -->
     <div class="nav-center">
         <h1 class="link-text">Review Bengkel</h1>
     </div>
+
+    <!-- Ikon favorit dan keranjang di kanan -->
     <div class="nav-right">
-        <a href="favorit.html"><img src="gambarlove.png" alt="love" class="img-right"></a>
-        <a href="keranjang.html"><img src="gambarkeranjang.png" alt="toko" class="img-right"></a>
+        <a href="keranjang.html"><img src="gambar3.png" alt="toko" class="img-right"></a>
+        <a href="favorit.html"><img src="gambar2.png" alt="love" class="img-right"></a>
     </div>
 </div>
+
 
 <div class="container">
     <!-- Form untuk menulis ulasan -->
